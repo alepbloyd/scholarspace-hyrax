@@ -14,8 +14,8 @@ jobs:
     - name: Create env file
       run: |
         cp docker/ci.env .env
+    - name: Remove ImageMagick install
         sed -i '9d' Dockerfile
         sed -i '14,24d' Dockerfile
-        cat Dockerfile
-    # - name: Run docker-compose stack
-      # run: docker-compose -f docker-compose.yml up -d
+    - name: Run docker-compose stack
+      run: docker-compose -f docker-compose.yml up -d
