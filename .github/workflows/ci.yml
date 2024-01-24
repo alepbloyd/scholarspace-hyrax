@@ -23,5 +23,5 @@ jobs:
         docker-compose -f docker-compose.yml up -d
     - name: Prepare databases
       run: |
-        docker exec --user scholarspace $(docker ps --filter "name=app" -q) bash -lc "bundle exec rails db:{create,migrate}"
-        docker exec --user scholarspace $(docker ps --filter "name=app" -q) bash -lc "bundle exec rspec"
+        docker exec $(docker ps --filter "name=app" -q) bash -lc "bundle exec rails db:{create,migrate}"
+        docker exec $(docker ps --filter "name=app" -q) bash -lc "bundle exec rspec"
