@@ -17,3 +17,4 @@ jobs:
         cp ./docker/ci.env /.env
     - name: Run docker-compose stack
       run: docker-compose -f docker-compose.yml up -d 
+      
