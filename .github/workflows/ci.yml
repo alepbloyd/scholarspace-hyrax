@@ -1,0 +1,34 @@
+name: CI testing
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - ci-testing
+      - ci-testing-2
+jobs:
+  CI:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out repository code
+      uses: actions/checkout@v4
+    - name: Create env file
+      run: |
+        cp docker/ci.env .env
+    - name: Remove ImageMagick install from Dockerfile
+      run: |
+        sed -i '9d' Dockerfile
+        sed -i '14,24d' Dockerfile
+    - name: Run docker-compose stack
+      run: |
+        docker-compose -f docker-compose.yml up -d
+    - name: Create databases
+      run: |
+        docker exec $(docker ps --filter "name=app" -q) bash -lc "bundle exec rails db:create"
+    - name: Migrate databases
+      run: |
+        docker exec $(docker ps --filter "name=app" -q) bash -lc "bundle exec rails db:migrate"
+    - name: Run RSpec tests
+      run: |
+        docker exec $(docker ps --filter "name=app" -q) bash -lc "bundle exec rspec"
+        
