@@ -25,3 +25,4 @@ jobs:
       run: |
         docker exec $(docker ps --filter "name=app" -q) bash -lc "bundle exec rails db:{create,migrate}"
         docker exec $(docker ps --filter "name=app" -q) bash -lc "bundle exec rspec"
+        
