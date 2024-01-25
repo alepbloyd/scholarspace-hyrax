@@ -10,7 +10,9 @@ for solr_core in "$SOLR_CORE"_test "$SOLR_CORE"_dev $SOLR_CORE; do
     if [ ! -d "/opt/solr/server/solr/mycores/${solr_core}" ]
     then
         # Replicated from the solr-create script
+        echo "Checkpoint -1"
         echo "Creating ${solr_core} core"
+        echo "Checkpoint -0.5"
         . /opt/docker-solr/scripts/run-initdb
         echo "Checkpoint 0"
         /opt/docker-solr/scripts/precreate-core $solr_core # this one???
