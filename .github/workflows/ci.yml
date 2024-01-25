@@ -30,7 +30,7 @@ jobs:
     - name: Setup Solr folders
       run: |
         mkdir -p /opt/solr
-        chown -R 8983:8983 /opt/solr
+        sudo chown -R 8983:8983 /opt/solr
         ls -alrth /opt
     - name: Try to start solr
       run: |
