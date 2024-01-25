@@ -24,11 +24,11 @@ jobs:
         docker-compose -f docker-compose.yml up -d --wait
     - name: Create databases
       run: |
-        docker exec $(docker ps --filter "name=app" -q) bash -lc "bundle exec rails db:create"
+        docker exec scholarspace-hyrax_app-server_1 /bin/sh "bundle exec rails db:create"
     - name: Migrate databases
       run: |
-        docker exec $(docker ps --filter "name=app" -q) bash -lc "bundle exec rails db:migrate"
+        docker exec scholarspace-hyrax_app-server_1 /bin/sh "bundle exec rails db:migrate"
     - name: Run RSpec tests
       run: |
-        docker exec $(docker ps --filter "name=app" -q) bash -lc "bundle exec rspec"
+        docker exec scholarspace-hyrax_app-server_1 /bin/sh "bundle exec rspec"
         
