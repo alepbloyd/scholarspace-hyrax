@@ -69,6 +69,7 @@ services:
       retries: 5
   solr:
     image: ghcr.io/gwu-libraries/scholarspace-hyrax-solr:master
+    # image: ghcr.io/gwu-libraries/scholarspace-hyrax-solr:2.0.1
     env_file: .env
     # build: 
     #  context: .
@@ -104,6 +105,7 @@ services:
   sidekiq:
     env_file: .env
     image: ghcr.io/gwu-libraries/scholarspace-app:master
+    # image: ghcr.io/gwu-libraries/scholarspace-app:2.0.1
     # image: scholarspace-app
     # build: 
     #  context: .
@@ -121,8 +123,9 @@ services:
       <<: *logging
     command: ["bash", "-l", "docker/scripts/scholarspace-setup.sh", "sidekiq"]
   app-server:
-    # env_file: .env
+    env_file: .env
     image: ghcr.io/gwu-libraries/scholarspace-app:master
+    # image: ghcr.io/gwu-libraries/scholarspace-app:2.0.1
     # image: scholarspace-app
     depends_on:
       pg-hyrax:
