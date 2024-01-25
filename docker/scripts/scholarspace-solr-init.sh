@@ -19,7 +19,6 @@ for solr_core in "$SOLR_CORE"_test "$SOLR_CORE"_dev $SOLR_CORE; do
 
         echo "----3----"
         # mkdir -p /opt/solr/server/solr/mycores/${solr_core}
-        exec whoami
         # exec ls -alrth /opt/solr/server/solr/mycores
 
         echo "----4----"
