@@ -86,11 +86,11 @@ services:
     restart: always
     logging: 
       <<: *logging
-    # healthcheck:
-    #   test: ["CMD-SHELL", 'wget --no-verbose --spider --tries=1 localhost:8983/solr/"$SOLR_CORE"_test/admin/ping?wt=json || exit 1']
-    #   interval: 30s
-    #   timeout: 10s
-    #   retries: 20
+    healthcheck:
+      test: ["CMD-SHELL", 'wget --no-verbose --spider --tries=1 localhost:8983 || exit 1']
+      interval: 30s
+      timeout: 10s
+      retries: 20
   redis:
     image: 'redis:5-alpine'
     hostname: redis-hyrax
