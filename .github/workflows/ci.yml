@@ -23,11 +23,6 @@ jobs:
     - name: Create env file
       run: |
         cp docker/ci.env .env
-    - name: Setup Solr folders
-      run: |
-        mkdir -p /opt/solr/server/solr/mycores
-        sudo chown -R 8983:8983 /opt/solr
-        ls -alrth /opt
     - name: Try to start solr
       run: |
         docker-compose up solr
