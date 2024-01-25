@@ -23,12 +23,22 @@ jobs:
     - name: Create env file
       run: |
         cp docker/ci.env .env
+    # - name: make solr dir
+    #   run: |
+    #     mkdir /opt/solr
+    #     chown -R 8983:8983 
     - name: PWD
       run: |
         pwd
-    - name: opt/ info
+    - name: home info
       run: |
-        ls -alrth /opt
+        ls -alrth /home
+    - name: runner info
+      run: |
+        ls -alrth /home/runner
+    - name: /home/runner/work info
+      run: |
+        ls -alrth /home/runner/work
     - name: Try to start solr
       run: |
         docker-compose up solr
