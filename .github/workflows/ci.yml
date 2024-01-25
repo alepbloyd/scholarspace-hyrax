@@ -21,7 +21,7 @@ jobs:
         sed -i '14,24d' Dockerfile
     - name: Run docker-compose stack
       run: |
-        docker compose up -f docker-compose.yml -d --wait
+        docker compose up -d --wait
     - name: Create databases
       run: |
         docker exec $(docker ps --filter "name=app" -q) bash -lc "bundle exec rails db:create"
