@@ -28,10 +28,10 @@ jobs:
         sed -i '17d' Dockerfile-solr
     - name: Try to start solr
       run: |
-        docker-compose up solr
+        docker-compose up -d solr
     - name: Create test core
       run: |
-        docker exec scholarspace-hyrax_solr_1 solr create_core -c gwss_solr_test
+        docker exec scholarspace-hyrax_solr_1 solr create_core -c scholarspace_test
     # - name: Run docker-compose stack
     #   run: |
     #     docker compose up --wait
