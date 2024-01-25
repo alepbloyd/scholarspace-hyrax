@@ -23,8 +23,8 @@ services:
     healthcheck:
       test: ["CMD-SHELL", "wget --no-verbose --spider --tries=1 localhost:8080 || exit 1"]
       interval: 30s
-      timeout: 5s
-      retries: 10
+      timeout: 10s
+      retries: 20
   pg-fcrepo:
     env_file: .env
     image: postgres:15.4
