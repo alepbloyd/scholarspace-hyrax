@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# something with the file paths in here not working with the github runner?
+# 
+
 set -e
 
 for solr_core in "$SOLR_CORE"_test "$SOLR_CORE"_dev $SOLR_CORE; do

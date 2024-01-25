@@ -15,10 +15,10 @@ jobs:
     - name: Create env file
       run: |
         cp docker/ci.env .env
-    - name: Remove ImageMagick install from Dockerfile
-      run: |
-        sed -i '9d' Dockerfile
-        sed -i '14,24d' Dockerfile
+    # - name: Remove ImageMagick install from Dockerfile
+      # run: |
+        # sed -i '9d' Dockerfile
+        # sed -i '14,24d' Dockerfile
     - name: Run docker-compose stack
       run: |
         docker compose up --wait
