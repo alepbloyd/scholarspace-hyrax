@@ -19,11 +19,11 @@ for solr_core in "$SOLR_CORE"_test "$SOLR_CORE"_dev $SOLR_CORE; do
 
         echo "----3----"
         # mkdir -p /opt/solr/server/solr/mycores/${solr_core}
-
+        exec whoami
         # exec ls -alrth /opt/solr/server/solr/mycores
 
         echo "----4----"
-        /opt/docker-solr/scripts/precreate-core $solr_core
+        exec /opt/docker-solr/scripts/precreate-core $solr_core
         # ScholarSpace-specific setup
         echo "Disabling managed schema"
         mv /opt/solr/server/solr/mycores/${solr_core}/conf/managed-schema /opt/solr/server/solr/mycores/${solr_core}/conf/managed-schema.bak
