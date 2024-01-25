@@ -10,6 +10,8 @@ for solr_core in "$SOLR_CORE"_test "$SOLR_CORE"_dev $SOLR_CORE; do
     if [ ! -d "/opt/solr/server/solr/mycores/${solr_core}" ]
     then
         # Replicated from the solr-create script
+        echo "----whoami------"
+        echo whoami
         echo "-------- 1 --------"
         echo "Creating ${solr_core} core"
         echo "-------- 2 --------"
