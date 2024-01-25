@@ -15,13 +15,13 @@ jobs:
     - name: Create env file
       run: |
         cp docker/ci.env .env
-    # - name: Remove ImageMagick install from Dockerfile
-    #   run: |
-    #     sed -i '9d' Dockerfile
-    #     sed -i '14,24d' Dockerfile
+    - name: Remove ImageMagick install from Dockerfile
+      run: |
+        sed -i '9d' Dockerfile
+        sed -i '14,24d' Dockerfile
     - name: Run docker-compose stack
       run: |
-        docker-compose -f docker-compose.yml up -d
+        docker-compose -f docker-compose.yml up -d --wait
     - name: Create databases
       run: |
         docker exec $(docker ps --filter "name=app" -q) bash -lc "bundle exec rails db:create"
