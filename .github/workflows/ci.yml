@@ -30,6 +30,7 @@ jobs:
     - name: Setup Solr folders
       run: |
         mkdir -p /opt/solr
+        ls -alrth /opt
     - name: Try to start solr
       run: |
         docker-compose up solr
