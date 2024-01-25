@@ -12,12 +12,15 @@ for solr_core in "$SOLR_CORE"_test "$SOLR_CORE"_dev $SOLR_CORE; do
         # Replicated from the solr-create script
         echo "Creating ${solr_core} core"
         . /opt/docker-solr/scripts/run-initdb
-        /opt/docker-solr/scripts/precreate-core $solr_core
+        echo "Checkpoint 0"
+        /opt/docker-solr/scripts/precreate-core $solr_core # this one???
+        echo "Checkpoint 1"
         # ScholarSpace-specific setup
         echo "Disabling managed schema"
         mv /opt/solr/server/solr/mycores/${solr_core}/conf/managed-schema /opt/solr/server/solr/mycores/${solr_core}/conf/managed-schema.bak
+        echo "Checkpoint 2"
         echo "Migrating configs"
-        cp -r /opt/scholarspace/solr/conf /opt/solr/server/solr/mycores/${solr_core}
+        cp -r /opt/scholarspace/solr/conf /opt/solr/server/solr/mycores/${solr_core} # this one???
         echo "Starting Solr with new core..."
     else
         echo "Core ${solr_core} already exists!"
