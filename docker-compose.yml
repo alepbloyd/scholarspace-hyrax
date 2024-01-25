@@ -88,8 +88,8 @@ services:
     healthcheck:
       test: ["CMD-SHELL", "wget --no-verbose --spider --tries=1 localhost:8983/solr/$SOLR_CORE/admin/ping || exit 1"]
       interval: 30s
-      timeout: 5s
-      retries: 10
+      timeout: 10s
+      retries: 20
   redis:
     image: 'redis:5-alpine'
     hostname: redis-hyrax
