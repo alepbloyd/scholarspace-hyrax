@@ -15,4 +15,4 @@ COPY --chown=solr:solr ./docker/scripts/scholarspace-solr-init.sh /opt/docker-so
 RUN chmod +x /opt/docker-solr/scripts/scholarspace-solr-init.sh
 
 # ENTRYPOINT ["/opt/docker-solr/scripts/scholarspace-solr-init.sh" ]
-CMD ["bash", "-l", "docker/scripts/scholarspace-solr-init.sh"]
+CMD ["bash", "-l", "/opt/docker-solr/scripts/scholarspace-solr-init.sh"]
