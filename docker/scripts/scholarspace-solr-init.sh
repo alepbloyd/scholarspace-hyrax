@@ -12,10 +12,9 @@ for solr_core in "$SOLR_CORE"_test "$SOLR_CORE"_dev $SOLR_CORE; do
         # Replicated from the solr-create script
         echo "----1----"
         echo "Creating ${solr_core} core"
-
-        echo "----2----"
         . /opt/docker-solr/scripts/run-initdb
-
+        
+        echo "----2----"
         exec ls -alrth /opt/solr
 
         echo "----3----"
