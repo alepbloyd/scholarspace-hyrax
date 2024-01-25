@@ -12,6 +12,7 @@ for solr_core in "$SOLR_CORE"_test "$SOLR_CORE"_dev $SOLR_CORE; do
         # Replicated from the solr-create script
         echo "Creating ${solr_core} core"
         . /opt/docker-solr/scripts/run-initdb
+        mkdir -p /opt/solr/server/solr/mycores
         /opt/docker-solr/scripts/precreate-core $solr_core
         # ScholarSpace-specific setup
         echo "Disabling managed schema"
