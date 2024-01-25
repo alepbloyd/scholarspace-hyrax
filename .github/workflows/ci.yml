@@ -23,10 +23,13 @@ jobs:
     - name: Create env file
       run: |
         cp docker/ci.env .env
-    - name: Start Solr
+    - name: Info
       run: |
         echo "------- PWD ---------"
         pwd
+    - name: Try to start solr
+      run: |
+        docker-compose up solr
     # - name: Run docker-compose stack
     #   run: |
     #     docker compose up --wait
