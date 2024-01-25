@@ -16,10 +16,10 @@ for solr_core in "$SOLR_CORE"_test "$SOLR_CORE"_dev $SOLR_CORE; do
         echo "----2----"
         . /opt/docker-solr/scripts/run-initdb
 
-        exec ls -alrth /opt
-
         echo "----3----"
         mkdir -p /opt/solr/server/solr/mycores/${solr_core}
+
+        exec ls -alrth /opt/solr/server/solr/mycores
 
         echo "----4----"
         /opt/docker-solr/scripts/precreate-core $solr_core
