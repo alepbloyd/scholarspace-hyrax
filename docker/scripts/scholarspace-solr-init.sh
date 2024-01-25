@@ -13,9 +13,9 @@ for solr_core in "$SOLR_CORE"_test "$SOLR_CORE"_dev $SOLR_CORE; do
         echo "----1----"
         echo "Creating ${solr_core} core"
         . /opt/docker-solr/scripts/run-initdb
-        
-        echo "----2----"
-        exec ls -alrth /opt/solr
+
+        # echo "----2----"
+        # exec ls -alrth /opt/solr
 
         echo "----3----"
         mkdir -p /opt/solr/server/solr/mycores/${solr_core}
