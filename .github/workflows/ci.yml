@@ -21,17 +21,14 @@ jobs:
         sed -i '14,24d' Dockerfile
     - name: Run docker-compose stack
       run: |
-        docker-compose -f docker-compose.yml up -d --wait
-    - name: Docker info
-      run: |
-        docker ps
+        docker compose up -f docker-compose.yml -d --wait
     - name: Create databases
       run: |
-        docker exec scholarspace-hyrax_app-server_1 /bin/sh "bundle exec rails db:create"
+        docker exec $(docker ps --filter "name=app" -q) bash -lc "bundle exec rails db:create"
     - name: Migrate databases
       run: |
-        docker exec scholarspace-hyrax_app-server_1 /bin/sh "bundle exec rails db:migrate"
+        docker exec $(docker ps --filter "name=app" -q) bash -lc "bundle exec rails db:migrate"
     - name: Run RSpec tests
       run: |
-        docker exec scholarspace-hyrax_app-server_1 /bin/sh "bundle exec rspec"
+        docker exec $(docker ps --filter "name=app" -q) bash -lc "bundle exec rspec"
         
