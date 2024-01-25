@@ -31,7 +31,7 @@ jobs:
         docker-compose up -d solr
     - name: Create test core
       run: |
-        docker exec scholarspace-hyrax_solr_1 solr create_core -c scholarspace_test
+        docker exec scholarspace-hyrax_solr_1 solr create_core -c scholarspace_test -p 8983
     # - name: Run docker-compose stack
     #   run: |
     #     docker compose up --wait
