@@ -25,10 +25,8 @@ jobs:
         cp docker/ci.env .env
     - name: Start Solr
       run: |
-        echo "---- /opt ----"
-        ls -alrth /opt
-        echo "PWD"
-        pwd
+        echo "---- /opt/docker-solr ----"
+        ls -alrth /opt/docker-solr
     # - name: Run docker-compose stack
     #   run: |
     #     docker compose up --wait
