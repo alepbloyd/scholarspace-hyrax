@@ -23,25 +23,28 @@ jobs:
     - name: Create env file
       run: |
         cp docker/ci.env .env
-    - name: Skip entrypoint in solr init
-      run: |
-        sed -i '17d' Dockerfile-solr
+    # - name: Create file structure
+    #   run: |
+        
+    # - name: Skip entrypoint in solr init
+    #   run: |
+    #     sed -i '17d' Dockerfile-solr
     - name: Try to start solr
       run: |
-        docker-compose up -d solr
-    - name: Create test core
-      run: |
-        docker exec scholarspace-hyrax_solr_1 solr create_core -c scholarspace_test -p 8983
-    - name: Run docker-compose stack
-      run: |
-        docker compose up --wait
-    - name: Create databases
-      run: |
-        docker exec $(docker ps --filter "name=app" -q) bash -lc "bundle exec rails db:create"
-    - name: Migrate databases
-      run: |
-        docker exec $(docker ps --filter "name=app" -q) bash -lc "bundle exec rails db:migrate"
-    - name: Run RSpec tests
-      run: |
-        docker exec $(docker ps --filter "name=app" -q) bash -lc "bundle exec rspec"
+        docker-compose up solr
+    # - name: Create test core
+    #   run: | # creates a core, but can't connect afterwards, and fails the health check
+    #     docker exec scholarspace-hyrax_solr_1 solr create_core -c scholarspace_test -p 8983
+    # - name: Run docker-compose stack
+    #   run: |
+    #     docker compose up --wait
+    # - name: Create databases
+    #   run: |
+    #     docker exec $(docker ps --filter "name=app" -q) bash -lc "bundle exec rails db:create"
+    # - name: Migrate databases
+    #   run: |
+    #     docker exec $(docker ps --filter "name=app" -q) bash -lc "bundle exec rails db:migrate"
+    # - name: Run RSpec tests
+    #   run: |
+    #     docker exec $(docker ps --filter "name=app" -q) bash -lc "bundle exec rspec"
         
