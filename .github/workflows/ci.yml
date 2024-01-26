@@ -19,7 +19,7 @@ jobs:
     - name: Setup Solr folder
       run: |
         mkdir /opt/solr
-        sudo chown 8983:8983 /opt/solr
+        sudo chown -R 8983:8983 /opt/solr
     - name: Login to GitHub Container Registry
       uses: docker/login-action@v3
       with:
