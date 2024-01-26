@@ -32,7 +32,7 @@ jobs:
     - name: Create env file
       run: |
         cp docker/ci.env .env
-    - name: Try to start solr
+    - name: Start Docker containers
       run: |
         docker compose up --wait
     - name: Create dev/test databases
