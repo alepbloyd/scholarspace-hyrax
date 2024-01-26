@@ -18,8 +18,8 @@ jobs:
         cd /opt/scholarspace
     - name: Setup Solr folder
       run: |
-        mkdir /opt/solr
-        sudo chown -R 8983:8983 /opt/solr
+        mkdir -p /opt/solr/server/solr/mycores
+        sudo chown -R 8983:8983 /opt/solr/server/solr/mycores
     - name: Login to GitHub Container Registry
       uses: docker/login-action@v3
       with:
