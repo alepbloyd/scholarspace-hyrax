@@ -12,6 +12,10 @@ jobs:
     permissions: 
       packages: read
     steps:
+    - name: Setup scholarspace folder
+      run: |
+        mkdir -p /opt/scholarspace
+        cd /opt/scholarspace
     - name: Login to GitHub Container Registry
       uses: docker/login-action@v3
       with:
@@ -23,18 +27,9 @@ jobs:
     - name: Create env file
       run: |
         cp docker/ci.env .env
-    # - name: Create file structure
-    #   run: |
-        
-    # - name: Skip entrypoint in solr init
-    #   run: |
-    #     sed -i '17d' Dockerfile-solr
     - name: Try to start solr
       run: |
         docker-compose up solr
-    # - name: Create test core
-    #   run: | # creates a core, but can't connect afterwards, and fails the health check
-    #     docker exec scholarspace-hyrax_solr_1 solr create_core -c scholarspace_test -p 8983
     # - name: Run docker-compose stack
     #   run: |
     #     docker compose up --wait
