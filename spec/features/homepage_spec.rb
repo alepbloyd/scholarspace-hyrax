@@ -18,7 +18,7 @@ RSpec.describe "Homepage" do
     it 'displays application title' do
       within "#masthead" do
         within ".title-wrap" do
-          expect(page).to_not have_content("ScholarSpace") #TESTING
+          expect(page).to have_content("ScholarSpace")
         end
       end
     end

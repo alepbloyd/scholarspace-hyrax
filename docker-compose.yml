@@ -103,11 +103,11 @@ services:
       test: ["CMD", "redis-cli","ping"]
   sidekiq:
     env_file: .env
-    image: ghcr.io/gwu-libraries/scholarspace-app:master
+    # image: ghcr.io/gwu-libraries/scholarspace-app:master
     # image: ghcr.io/gwu-libraries/scholarspace-app:2.0.1
-    # image: scholarspace-app
-    # build: 
-    #  context: .
+    image: scholarspace-app
+    build: 
+     context: .
     depends_on:
       redis:
         condition: service_healthy
@@ -123,9 +123,9 @@ services:
     command: ["bash", "-l", "docker/scripts/scholarspace-setup.sh", "sidekiq"]
   app-server:
     env_file: .env
-    image: ghcr.io/gwu-libraries/scholarspace-app:master
+    # image: ghcr.io/gwu-libraries/scholarspace-app:master
     # image: ghcr.io/gwu-libraries/scholarspace-app:2.0.1
-    # image: scholarspace-app
+    image: scholarspace-app
     depends_on:
       pg-hyrax:
         condition: service_healthy
