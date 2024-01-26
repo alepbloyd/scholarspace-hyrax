@@ -14,6 +14,7 @@ jobs:
     steps:
     - name: Setup scholarspace folder
       run: |
+        id $USER
         mkdir -p /opt/scholarspace
         cd /opt/scholarspace
         whoami
@@ -36,16 +37,3 @@ jobs:
     - name: Try to start solr
       run: |
         docker-compose up solr
-    # - name: Run docker-compose stack
-    #   run: |
-    #     docker compose up --wait
-    # - name: Create databases
-    #   run: |
-    #     docker exec $(docker ps --filter "name=app" -q) bash -lc "bundle exec rails db:create"
-    # - name: Migrate databases
-    #   run: |
-    #     docker exec $(docker ps --filter "name=app" -q) bash -lc "bundle exec rails db:migrate"
-    # - name: Run RSpec tests
-    #   run: |
-    #     docker exec $(docker ps --filter "name=app" -q) bash -lc "bundle exec rspec"
-        
