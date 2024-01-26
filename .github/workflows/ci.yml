@@ -20,7 +20,6 @@ jobs:
         password: ${{ secrets.CR_PAT }}
     - name: Setup scholarspace folder
       run: |
-        id $USER
         mkdir -p /opt/scholarspace
         mkdir /opt/scholarspace/certs
         mkdir /opt/scholarspace-tmp
@@ -35,4 +34,13 @@ jobs:
         cp docker/ci.env .env
     - name: Try to start solr
       run: |
-        docker-compose up solr
+        docker compose up --wait
+    - name: Create dev/test databases
+      run: |
+        docker exec $(docker ps --filter 'name=app' -q) bash -lc "bundle exec rails db:create"
+    - name: Migrate dev/test databases
+      run: |
+        docker exec $(docker ps --filter 'name=app' -q) bash -lc "bundle exec rails db:migrate"
+    - name: Run RSpec tests
+      run: |
+        docker exec $(docker ps --filter 'name=app' -q) bash -lc "bundle exec rspec"
