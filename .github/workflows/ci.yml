@@ -16,6 +16,8 @@ jobs:
       run: |
         mkdir -p /opt/scholarspace
         cd /opt/scholarspace
+        echo whoami
+        echo pwd
     - name: Setup Solr folder
       run: |
         mkdir -p /opt/solr/server/solr/mycores/scholarspace_test
