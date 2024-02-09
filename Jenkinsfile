@@ -1,9 +1,9 @@
 pipeline {
     agent any
     stages {
-        stage('docker container info') {
+        stage('pull master branch') {
             steps {
-                sh 'docker ps'
+                sh 'git status'
             }
         }
     }
