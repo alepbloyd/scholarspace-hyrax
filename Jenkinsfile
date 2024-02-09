@@ -7,8 +7,8 @@ pipeline {
     stages {
         stage('info') {
             steps {
-                sh 'docker compose up -d --no-color --wait'
-                sh 'docker compose ps'
+                sh 'docker-compose up -d --no-color --wait'
+                sh 'docker-compose ps'
             }
         }
     }
