@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('switch scholarspace folder') {
             steps {
-                sh 'cd /opt/scholarspace/scholarspace-hyrax'
+                sh 'cd /opt/'
                 sh 'pwd'
                 sh 'ls -l'
             }
