@@ -1,9 +1,11 @@
 pipeline {
     agent any
     stages {
-        stage('switch to master branch') {
+        stage('switch scholarspace folder') {
             steps {
-                sh 'chmod +x /opt/scholarspace/scholarspace-hyrax/script.sh'
+                sh 'cd /opt/scholarspace/scholarspace-hyrax'
+                sh 'pwd'
+                sh 'ls -l'
             }
         }
     }
