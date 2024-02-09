@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('pull master branch') {
             steps {
-                sh 'git branch master'
+                sh 'git checkout master'
             }
         }
     }
