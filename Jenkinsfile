@@ -3,13 +3,17 @@ pipeline {
     stages {
         stage('switch to master branch') {
             steps {
-                sh 'git checkout master'
+                dir('/opt/scholarspace/scholarspace-hyrax') {
+                    sh 'pwd'
+                }
+                // sh 'git checkout master'
             }
         }
-        stage('pull git changes') {
-            steps {
-                sh 'git pull'
-            }
-        }
+        // stage('pull git changes') {
+        //     steps {
+        //         sh 'git pull'
+        //     }
+        // }
     }
 }
+
