@@ -30,7 +30,7 @@ pipeline {
         }
         stage('start docker containers') {
             steps {
-                sh 'docker compose up --wait'
+                sh 'docker compose up'
             }
         }
     }
