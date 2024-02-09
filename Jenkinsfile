@@ -5,7 +5,7 @@ pipeline {
     // }
     agent any
     stages {
-        state('info') {
+        stage('info') {
             steps {
                 sh 'whoami'
                 sh 'pwd'
