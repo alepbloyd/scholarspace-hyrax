@@ -4,16 +4,13 @@ pipeline {
         stage('switch to master branch') {
             steps {
                 dir('/opt/scholarspace/scholarspace-hyrax') {
-                    sh 'pwd'
+                    sh 'docker ps'
                 }
-                // sh 'git checkout master'
             }
         }
-        // stage('pull git changes') {
-        //     steps {
-        //         sh 'git pull'
-        //     }
-        // }
     }
 }
 
+// clobber assets
+// precompile assets
+// passenger-config restart-app /
