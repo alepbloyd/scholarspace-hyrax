@@ -3,10 +3,7 @@ pipeline {
     stages {
         stage('switch to master branch') {
             steps {
-                // dir('/opt/scholarspace/scholarspace-hyrax') {
-                //     sh 'docker ps'
-                // }
-                sh 'ls -l /opt/scholarspace'
+                sh 'chmod +x /opt/scholarspace/scholarspace-hyrax/script.sh'
             }
         }
     }
