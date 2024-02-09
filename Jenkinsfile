@@ -1,9 +1,12 @@
 pipeline {
-    agent { docker { image 'ruby:3.3.0-alpine3.19' } }
+    // agent { docker { image 'ruby:3.3.0-alpine3.19' } }
+    agent { 
+        dockerfile true
+    }
     stages {
-        stage('build') {
+        stage('info') {
             steps {
-                sh 'ruby --version'
+                sh 'echo pwd'
             }
         }
     }
