@@ -5,10 +5,25 @@ pipeline {
     // }
     agent any
     stages {
-        stage('info') {
+        stage('prepare file structure') {
             steps {
-                sh 'docker-compose up -d --no-color --wait'
-                sh 'docker-compose ps'
+                sh 'mkdir -p /opt/scholarspace'
+                sh 'mkdir /opt/scholarspace/certs'
+                sh 'mkdir /opt/scholarspace-tmp'
+                sh 'mkdir /opt/scholarspace-minter'
+                sh 'mkdir /opt/scholarspace/fedora-data'
+                sh 'mkdir /opt/scholarspace/solr-data'
+                sh 'cd /opt/scholarspace'
+            }
+        }
+        stage('create env file') {
+            steps {
+                sh 'cp docker/ci.env .env'
+            }
+        }
+        stage('start docker containers') {
+            steps {
+                sh 'docker compose up --wait'
             }
         }
     }
