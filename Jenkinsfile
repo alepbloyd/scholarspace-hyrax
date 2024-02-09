@@ -7,7 +7,7 @@ pipeline {
     stages {
         stage('info') {
             steps {
-                sh 'whoami'
+                sh 'cd /opt'
                 sh 'pwd'
                 sh 'ls -l'
             }
