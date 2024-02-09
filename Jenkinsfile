@@ -3,10 +3,9 @@ pipeline {
     stages {
         stage('switch scholarspace folder') {
             steps {
-                dir('/opt') {
-                    sh 'pwd'
-                    sh 'ls -l'
-                }
+                sh 'cd /opt'
+                sh 'pwd'
+                sh 'whoami'
             }
         }
     }
