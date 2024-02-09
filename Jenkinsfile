@@ -5,6 +5,13 @@ pipeline {
     // }
     agent any
     stages {
+        state('info') {
+            steps {
+                sh 'whoami'
+                sh 'pwd'
+                sh 'ls -l'
+            }
+        }
         stage('prepare file structure') {
             steps {
                 sh 'mkdir -p /opt/scholarspace'
