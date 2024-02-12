@@ -5,6 +5,7 @@ pipeline {
             steps {
                 sh 'cd /opt/scholarspace/scholarspace-hyrax'
                 sh 'ls -l'
+                sh 'su ubuntu'
                 sh 'whoami'
             }
         }
