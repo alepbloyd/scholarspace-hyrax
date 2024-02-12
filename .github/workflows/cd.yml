@@ -1,0 +1,9 @@
+name: CD testing
+
+on:
+  # allow running action manually
+  workflow_dispatch:
+  # trigger on pull request to "master" branch
+  push:
+    branches:
+      - master
