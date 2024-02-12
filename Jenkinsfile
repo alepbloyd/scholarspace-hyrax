@@ -1,12 +1,16 @@
 pipeline {
     agent any
     stages {
-        stage('switch scholarspace folder') {
+        stage('switch to scholarspace folder') {
             steps {
+                sh 'cd /opt/scholarspace/scholarspace-hyrax'
                 sh 'ls -l'
-                sh 'pwd'
                 sh 'whoami'
-                sh 'ls -l /'
+            }
+        }
+        stage('stop docker containers') {
+            steps {
+                sh 'docker-compose down'
             }
         }
     }
