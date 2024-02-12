@@ -6,6 +6,7 @@ pipeline {
                 sh 'ls -l'
                 sh 'pwd'
                 sh 'whoami'
+                sh 'ls -l /'
             }
         }
     }
