@@ -3,15 +3,11 @@ pipeline {
     stages {
         stage('switch to scholarspace folder') {
             steps {
-                sh 'cd /opt/scholarspace/scholarspace-hyrax'
-                sh 'ls -l'
-                sh 'sudo su ubuntu'
-                sh 'whoami'
-            }
-        }
-        stage('stop docker containers') {
-            steps {
-                sh 'docker-compose down'
+                dir('/opt/scholarspace/scholarspace-hyrax') {
+                    sh 'ls -l'
+                    sh 'whoami'
+                    sh 'ls -l /opt/scholarspace'
+                }
             }
         }
     }
