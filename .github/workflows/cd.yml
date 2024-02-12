@@ -7,3 +7,16 @@ on:
   push:
     branches:
       - master
+
+jobs:
+  CD:
+    runs-on: ubuntu-latest
+    permissions: 
+      packages: read
+    steps:
+    - name: Login to test server
+      run: |
+        ssh -i ${{ secrets.SSH_PRIVATE_KEY }} ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }}
+        cd /opt/scholarspace/scholarspace-hyrax
+        whoami
+        ls -l
