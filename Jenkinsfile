@@ -1,10 +1,8 @@
 pipeline {
     agent any
     stages {
-        stage('switch to scholarspace folder') {
-            steps {
-                dir('/opt/scholarspace/scholarspace-hyrax') {
-                    sh 'ls -l'
+        stage('info') {
+            sshagent(crendentials: ['alep-deploy']) {
                     sh 'whoami'
                     sh 'ls -l /opt/scholarspace'
                 }
