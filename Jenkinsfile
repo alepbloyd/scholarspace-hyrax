@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('info') {
             steps('info') {
-                sshagent(['alex-dev']) {
+                sshagent(['alex-ss-dev']) {
                     sh 'whoami'
                     sh 'ls -l'
                 }
