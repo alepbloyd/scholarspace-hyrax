@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('info') {
             steps('info') {
-                ssh(credentials: ['alep-deploy']) {
+                sshagent(credentials: ['alep-deploy']) {
                     sh 'whoami'
                     sh 'ls -l /opt/scholarspace'
                 }
