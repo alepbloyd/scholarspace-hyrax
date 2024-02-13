@@ -1,13 +1,13 @@
 pipeline {
     agent any
     stages {
-        stage('info') {
+        steps('info') {
             sshagent(crendentials: ['alep-deploy']) {
-                    sh 'whoami'
-                    sh 'ls -l /opt/scholarspace'
-                }
+                sh 'whoami'
+                sh 'ls -l /opt/scholarspace'
             }
         }
+    }
 }
 
 // clobber assets
