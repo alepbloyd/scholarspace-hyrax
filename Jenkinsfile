@@ -3,9 +3,9 @@ pipeline {
     stages {
         stage('info') {
             steps('info') {
-                sshagent(credentials: ['alep-deploy']) {
+                sshagent(credentials: ['alex-dev']) {
                     sh 'whoami'
-                    sh 'ls -l /opt/scholarspace'
+                    sh 'ls -l'
                 }
             }
         }
