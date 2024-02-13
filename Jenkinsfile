@@ -1,10 +1,12 @@
 pipeline {
     agent any
     stages {
-        steps('info') {
-            sshagent(crendentials: ['alep-deploy']) {
-                sh 'whoami'
-                sh 'ls -l /opt/scholarspace'
+        stage('info') {
+            steps('info') {
+                sshagent(crendentials: ['alep-deploy']) {
+                    sh 'whoami'
+                    sh 'ls -l /opt/scholarspace'
+                }
             }
         }
     }
